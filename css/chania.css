@@ -1,0 +1,202 @@
+@charset "utf-8";
+
+* {
+	padding:0; margin:0; box-sizing:border-box;
+}
+html {
+	scroll-behavior:smooth;
+}
+html,body {
+	font:10pt/180% 'Nanum Gothic', sans-serif;
+}
+body {overflow:hidden;}
+img 	{
+	display:block; max-width:100%;
+}
+/* 모든 링크요소*/
+a {
+	text-decoration:none; color:black;
+}
+
+/*전체레이아웃*/
+#wrapper {
+	width:600px; margin:auto;
+	border:1px solid red;
+	position:relative;
+}
+
+/*nav과 main*/
+#layout {
+	padding:10px 10px 0  10px;
+}
+
+/*상단*/
+header {
+	background:#5bb4db; color:white;
+	padding:15px;
+}
+header h1 {
+	text-align:center;
+	padding:20px 15px;
+}
+
+/*햄버거 아이콘*/
+header button {
+	float:left; background:none;
+	padding:5px; color:white;
+	font-size:2rem; font-weight:bold;
+	border:none; margin-left:10px; margin-top:-10px;   /*마진은 -값 적용가능, 패딩은 -값 적용불가능*/
+}
+
+/*  내비게이션 메뉴  */
+#black {
+	position:absolute; width:100%;
+	background:rgba(0,0,0, 0.85); left:0; /*left:0; 부모요소를 기준(지금 wrapper)으로 왼쪽값0에서 시작하겠다 position:absolute;을 적용했으므로.*/
+	height:100%; z-index:1; /*이 z-index값은 부모자식자손 간 계층도 살펴봐야함 무조건 1로 올라가는게 아니라서.*/
+	display:none; /*js에서 좌표가 이동되는 애니메이션때문에 안보이게 해놈*/
+}
+
+nav {
+	position:relative; /*js에서 좌표가 이동되는 에니메이션 넣을 것이므로 포지션값이 필요하다.*/
+	background:rgba(255,255,255, 0.9);
+	width:60%; height:80vh; left:-61%; /*js에서 좌표가 이동되는 애니메이션때문에 없어지게 해놈 넓이가 60 이라 더 들어가게 -61해봄*/
+	border-bottom-right-radius:100px;
+}
+
+nav ul {
+	display:flex; justify-content:space-between;
+	list-style:none  inside  url('../images/bullet.png');
+	flex-direction:column; line-height:400%;
+	padding-top:20px; margin-left:30px;
+}
+nav a {
+	margin-left:-3px;
+}
+
+/*메인*/
+#m1 + p > a {
+	color:red; padding-left:20px;
+}
+main>h2 {
+	padding:30px 0 10px 0;
+}
+main>p {
+	text-align:justify;
+}
+main>p::first-letter {
+	font-size:1.5rem; font-weight:bold;
+	color:#5bb5db;
+}
+main>p>img {
+	width:150px;
+}
+main>p:first-of-type>img {
+	float:left; margin-right:10px;
+}
+main>p:last-of-type>img {
+	float:right; margin-left:10px;
+}
+main>ol {
+	color:#5bb4db;
+	list-style-position:inside;
+	margin-bottom:10px;
+}
+
+/*이미지 페이드 슬라이드*/
+main>figure {
+	margin-bottom:20px;
+}
+figure div {
+	position:relative; /*이미지 내려오게 하려고.*/
+}
+main>figure img {
+	width:100%; /* margin:auto; */
+	border-radius:20px;
+	box-shadow:2px 2px 5px black;
+}
+figure img:not(:first-child){
+	position:absolute; top:0;
+}  /*absolute니까 떠올라서 밑에오는 콘텐츠가 위로 치고 올라오게 된다. 그래서 not 써서 하나는 위치시켜서 못떠오르게 만듦*/
+main>figure>figcaption {
+	font-size:0.9rem;
+	text-align:center;
+	padding-top:5px;
+}
+
+/*부가정보*/
+#layout + aside {
+	padding:15px; 
+	background:rgba(91,181,219, 0.3);
+	margin-top:20px;
+}
+#layout + aside> h3 {
+	background:url('../images/bullet.png') no-repeat left 5px;
+	padding-left:20px;
+}
+
+/*하단*/
+footer {
+	padding:15px; background:#ddd;
+}
+footer span {
+	font-size:0.9rem; color:#666;
+}
+
+/*TOP 아이콘*/
+footer + a {
+	position:fixed; bottom:10px; 
+	background:white; 
+	border-radius:5px;
+	box-shadow:0 0 5px black;
+	right:calc(((100% - 600px) / 2) + 5px);
+}
+footer + a:hover {
+	background:aqua;
+}
+
+/*공지사항*/
+#popup {
+	position:absolute;
+	top:0; z-index:1;
+	width:100%; height:100%;
+	background:rgba(0,0,0,0.9);
+}
+#popup section {
+	max-width:400px; margin:auto;
+	background:white; margin-top:20vh;
+	padding:20px 20px 40px 20px; border-radius:20px;	
+}
+#popup section button {
+	float:right;
+}
+
+
+/*휴대폰*/
+@media(max-width:600px){
+	footer + a {right:10px;}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
